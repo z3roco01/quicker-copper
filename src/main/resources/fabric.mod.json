@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "quicker_copper",
+	"version": "${version}",
+	"name": "Quicker Copper",
+	"description": "Makes copper blocks weather quicker in rain and water",
+	"authors": [
+		"z3roco01"
+	],
+	"contact": {
+	},
+	"license": "Unlicense",
+	"icon": "assets/quicker_copper/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"z3roco01.quickercopper.QuickerCopper"
+		]
+	},
+	"mixins": [
+		"quicker_copper.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "z3roco01.quickercopper.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"DegradableMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
