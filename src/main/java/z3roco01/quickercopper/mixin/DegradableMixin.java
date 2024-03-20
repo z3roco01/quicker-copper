@@ -43,10 +43,10 @@ public interface DegradableMixin<T extends Enum<T>> {
 
                 int blockDegradeOrdi = degradable.getDegradationLevel().ordinal();
                 if (blockDegradeOrdi > degradedLvlOrdi)
-                    chanceOxidize += 0.008; // add 0.003 to the chance to preoxidize per oxidizable block with higher level, can become an increase of 6.4% or 0.064
+                    chanceOxidize += 0.008; // add 0.003 to the chance to oxidize per oxidizable block with higher level, can become an increase of 6.4% or 0.064
             }
             if(block == Blocks.WATER)
-                chanceOxidize += 0.004; // add 0.0015 to the chance to preoxidize per water block around it, can become an increase of 3.2% or 0.032
+                chanceOxidize += 0.004; // add 0.0015 to the chance to oxidize per water block around it, can become an increase of 3.2% or 0.032
         }
 
 
