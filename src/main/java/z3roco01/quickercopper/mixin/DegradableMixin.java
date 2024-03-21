@@ -20,7 +20,6 @@ import java.util.Optional;
 @Mixin(Degradable.class)
 public interface DegradableMixin<T extends Enum<T>> {
     @Shadow T getDegradationLevel();
-    @Shadow float getDegradationChanceMultiplier();
     @Shadow Optional<BlockState> getDegradationResult(BlockState var1);
 
     @Inject(method = "tickDegradation", at = @At("HEAD"), cancellable = true)
@@ -55,36 +54,4 @@ public interface DegradableMixin<T extends Enum<T>> {
 
         ci.cancel();
     }
-
-    /*@Inject(method = "tryDegrade", cancellable = true, at = @At("HEAD"))
-    private void tryDegrade(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfoReturnable<Optional<BlockState>> cir) {
-        BlockPos blockPos;
-        int i = ((Enum)this.getDegradationLevel()).ordinal();
-        int blocksEqLowLvl = 0;
-        int blocksHigherLvl = 0;
-        Iterator<BlockPos> iterator = BlockPos.iterateOutwards(pos, 4, 4, 4).iterator();
-        while (iterator.hasNext() && ((blockPos = iterator.next()).getManhattanDistance(pos)) <= 4) {
-            Block block;
-            if (blockPos.equals(pos) || !((block = world.getBlockState(blockPos).getBlock()) instanceof Degradable)) continue;
-            Degradable degradable = (Degradable)((Object)block);
-            T blockDegradeLvl = (T)degradable.getDegradationLevel();
-            if (this.getDegradationLevel().getClass() != blockDegradeLvl.getClass()) continue;
-            int blockDegradeOrdi = blockDegradeLvl.ordinal();
-            if (blockDegradeOrdi > i) {
-                ++blocksHigherLvl;
-                continue;
-            }
-            ++blocksEqLowLvl;
-        }
-        float f = (float)(blocksHigherLvl + 1) / (float)(blocksHigherLvl + blocksEqLowLvl + 1);
-        float g = f * f * this.getDegradationChanceMultiplier();
-        if (random.nextFloat() < g) {
-            cir.setReturnValue(this.getDegradationResult(state));
-            cir.cancel();
-            return;
-        }
-        cir.setReturnValue(Optional.empty());
-        cir.cancel();
-        return;
-    }*/
 }
