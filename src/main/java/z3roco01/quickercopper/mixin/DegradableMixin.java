@@ -25,7 +25,6 @@ public interface DegradableMixin<T extends Enum<T>> {
 
     @Inject(method = "tickDegradation", at = @At("HEAD"), cancellable = true)
     private void tickDegradation(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
-        QuickerCopper.LOGGER.info("peanuits");
         double chanceOxidize = 0.03;
 
         if(world.hasRain(pos))
@@ -52,7 +51,7 @@ public interface DegradableMixin<T extends Enum<T>> {
 
         QuickerCopper.LOGGER.info(pos + " " + chanceOxidize);
         if(random.nextDouble() < chanceOxidize)
-            QuickerCopper.LOGGER.info("balles"); this.getDegradationResult(state).ifPresent(degraded -> world.setBlockState(pos, (BlockState)degraded));
+            this.getDegradationResult(state).ifPresent(degraded -> world.setBlockState(pos, (BlockState)degraded));
 
         ci.cancel();
     }
