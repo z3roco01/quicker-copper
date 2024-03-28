@@ -38,7 +38,6 @@ public interface DegradableMixin<T extends Enum<T>> {
         }
 
 
-        QuickerCopper.LOGGER.info(pos + " " + chanceOxidize);
 
         if(random.nextDouble() < chanceOxidize)
             this.getDegradationResult(state).ifPresent(degraded -> world.setBlockState(pos, (BlockState)degraded));
