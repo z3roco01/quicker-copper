@@ -37,8 +37,6 @@ public interface DegradableMixin<T extends Enum<T>> {
             chanceOxidize += getIncrease(degradedLvlOrdi, blockPos, world);
         }
 
-
-
         if(random.nextDouble() < chanceOxidize)
             this.getDegradationResult(state).ifPresent(degraded -> world.setBlockState(pos, (BlockState)degraded));
 
@@ -49,9 +47,7 @@ public interface DegradableMixin<T extends Enum<T>> {
     private double getIncrease(int degradedLvl, BlockPos blockPos, ServerWorld world) {
         double increase = 0;
         Block block = world.getBlockState(blockPos).getBlock();
-        if(block instanceof Degradable) {
-            Degradable degradable = (Degradable) block;
-
+        if(block instanceof Degradable<?> degradable) {
             int blockDegradeOrdi = degradable.getDegradationLevel().ordinal();
             if (blockDegradeOrdi > degradedLvl)
                 increase += 0.008; // add 0.003 to the chance to oxidize per oxidizable block with higher level, can become an increase of 6.4% or 0.064

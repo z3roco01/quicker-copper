@@ -12,10 +12,6 @@ public class QuickerCopper implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("starting init :3");
-
-
-
-		LOGGER.info("finished init :p");
+		LOGGER.info(MOD_ID + " loaded !! :D");
 	}
 }
